@@ -46,4 +46,8 @@ public class Node {
     public void addNeighborNode(Node nb) {
         this.nbs.add(nb);
     }
+
+    public Node getBackBone() {
+        return BackBone;
+    }
 }

@@ -51,15 +51,22 @@ public class Network {
     private boolean shouldBeConnected(Node n1, Node n2) {
         if (n1.isBackBone()) {
             if (n2.isBackBone()) {
-                return getRandomNum(3) != 0;
+                return getRandomNum(Config.NumOfBackBoneNode) != 0;
             } else {
-                return getRandomNum(50) == -1;
+                if (n2.getBackBone().getId() == n1.getId())
+                    return getRandomNum(numOfNodeInBackBoneNode.get(n1) * n2.getDistFromBB()) == 0;
+                return getRandomNum(Config.NumOfNode * n2.getDistFromBB()) == 0;
             }
         } else {
             if (n2.isBackBone()) {
-                return getRandomNum(50) == -1;
+                if (n1.getBackBone().getId() == n2.getId())
+                    return getRandomNum(numOfNodeInBackBoneNode.get(n2) * n1.getDistFromBB()) == 0;
+                return getRandomNum(Config.NumOfNode * n1.getDistFromBB()) == 0;
             } else {
-                return getRandomNum(100) == -1;
+                if (n1.getBackBone().getId() == n2.getBackBone().getId())
+                    return getRandomNum(numOfNodeInBackBoneNode.get(n1.getBackBone()) * n1.getDistFromBB() * n2.getDistFromBB()) == 0;
+                else
+                    return getRandomNum(Config.NumOfNode) == -1;
             }
         }
     }
