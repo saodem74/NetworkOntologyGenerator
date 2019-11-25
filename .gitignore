@@ -26,3 +26,6 @@ hs_err_pid*
 .idea/uiDesigner.xml
 .idea/workspace.xml
 NetworkOntologyGenerator.iml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/vcs.xml

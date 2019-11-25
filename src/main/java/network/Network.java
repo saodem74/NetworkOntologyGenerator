@@ -9,6 +9,7 @@ public class Network {
     Map<Node, Integer> numOfNodeInBackBoneNode;
     List<Node> allNodes;
     Map<Integer, Set<Integer>> neighbors;
+    int countID = 1;
 
     public Network() {
         backBoneNodes = new ArrayList<Node>();
@@ -20,9 +21,10 @@ public class Network {
     }
 
     private int nextID() {
-        int tmpID = (rd.nextInt(Config.NumOfNode)) + 1;
-        while (mark.contains(tmpID))  tmpID = (rd.nextInt(Config.NumOfNode)) + 1;
-        return tmpID;
+//        int tmpID = (rd.nextInt(Config.NumOfNode)) + 1;
+//        while (mark.contains(tmpID))  tmpID = (rd.nextInt(Config.NumOfNode)) + 1;
+//        return tmpID;
+        return countID++;
     }
 
     private int getNumOfDegree() {
@@ -49,15 +51,15 @@ public class Network {
     private boolean shouldBeConnected(Node n1, Node n2) {
         if (n1.isBackBone()) {
             if (n2.isBackBone()) {
-                return getRandomNum(2) == 0;
+                return getRandomNum(3) != 0;
             } else {
-                return getRandomNum(10) == 0;
+                return getRandomNum(50) == -1;
             }
         } else {
             if (n2.isBackBone()) {
-                return getRandomNum(2) == 0;
+                return getRandomNum(50) == -1;
             } else {
-                return getRandomNum(20) == 0;
+                return getRandomNum(100) == -1;
             }
         }
     }
@@ -90,7 +92,7 @@ public class Network {
                 sum += num;
             }
             else {
-                numOfNodeInBackBoneNode.put(backBoneNodes.get(i), backBoneNodes.size() - sum);
+                numOfNodeInBackBoneNode.put(backBoneNodes.get(i), Config.NumOfNode - sum);
             }
 
         }
