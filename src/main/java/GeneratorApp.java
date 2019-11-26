@@ -11,7 +11,6 @@ public class GeneratorApp {
     public static void main(String[] args) {
         System.out.println("=== Start ===");
         GeneratorApp.run();
-//        System.out.println("Working Directory = " + System.getProperty("user.dir"));
         System.out.println("=== End ===");
     }
 }

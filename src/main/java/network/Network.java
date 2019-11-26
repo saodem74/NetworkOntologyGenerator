@@ -164,7 +164,7 @@ public class Network {
             sb.append("]\n");
         }
 
-//        sb.append(", ");
+        // Print out backbone node
         int cc = 0;
         for (Node bb : backBoneNodes) {
             sb.append(bb.getId());
